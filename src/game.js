@@ -36,13 +36,32 @@ export default class Game {
 
 	movePieceLeft() {
 		this.activePiece.x -= 1;
+
+		if (ifPieceOutOfBound()) {
+			this.activePiece.x += 1;
+		}
 	}
 
 	movePieceRight() {
 		this.activePiece.x += 1;
+
+		if (ifPieceOutOfBound()) {
+			this.activePiece.x -= 1;
+		}
 	}
 
 	movePieceDown() {
 		this.activePiece.y += 1;
+
+		if (ifPieceOutOfBound()) {
+			this.activePiece.y -= 1;
+		}
+	}
+
+	ifPieceOutOfBound() {
+		const playfield = this.playfield;
+		const {y, x} = this.activePiece;
+
+		return playfield[y] === undefined || playfield[y][x] === undefined;
 	}
 }
