@@ -33,4 +33,16 @@ export default class Game {
 			[0, 0, 0]
 		]
 	}
+
+	movePieceLeft() {
+		this.activePiece.x -= 1;
+	}
+
+	movePieceRight() {
+		this.activePiece.x += 1;
+	}
+
+	movePieceDown() {
+		this.activePiece.y += 1;
+	}
 }
