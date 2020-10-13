@@ -37,7 +37,7 @@ export default class Game {
 	movePieceLeft() {
 		this.activePiece.x -= 1;
 
-		if (ifPieceOutOfBound()) {
+		if (this.ifPieceOutOfBound()) {
 			this.activePiece.x += 1;
 		}
 	}
@@ -45,7 +45,7 @@ export default class Game {
 	movePieceRight() {
 		this.activePiece.x += 1;
 
-		if (ifPieceOutOfBound()) {
+		if (this.ifPieceOutOfBound()) {
 			this.activePiece.x -= 1;
 		}
 	}
@@ -53,7 +53,7 @@ export default class Game {
 	movePieceDown() {
 		this.activePiece.y += 1;
 
-		if (ifPieceOutOfBound()) {
+		if (this.ifPieceOutOfBound()) {
 			this.activePiece.y -= 1;
 		}
 	}
