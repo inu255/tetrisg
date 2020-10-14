@@ -66,7 +66,6 @@ export default class Game {
 	}
 
 	lockPiece() {
-		const blocks = this.activePiece.blocks;
 		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
 		for (let y = 0; y < blocks.length; y++) {
