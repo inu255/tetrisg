@@ -70,7 +70,7 @@ export default class Game {
 
 		for (let y = 0; y < blocks.length; y++) {
 			for (var x = 0; x < blocks[y].length; x++) {
-				this.playfield[this.pieceY + y][this.pieceX + x] = blocks[y][x];
+				this.playfield[pieceY + y][pieceX + x] = blocks[y][x];
 			}
 		}
 	}
