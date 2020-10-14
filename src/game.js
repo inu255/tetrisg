@@ -55,14 +55,26 @@ export default class Game {
 
 		if (this.ifPieceOutOfBound()) {
 			this.activePiece.y -= 1;
+			this.lockPiece();
 		}
 	}
 
 	ifPieceOutOfBound() {
-		const playfield = this.playfield;
-		const {y, x} = this.activePiece;
+		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
-		return playfield[y] === undefined || playfield[y][x] === undefined;
+		for (let y = 0; y < blocks.length; y++) {
+			for (var x = 0; x < blocks[y].length; x++) {
+				if (
+					blocks[y][x]) &&
+					((this.playfield[pieceY + y] === undefined || this.playfield[pieceY + y][pieceX + x] === undefined;) ||
+					(this.playfield[pieceY + y][pieceX + x])
+				) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	lockPiece() {
@@ -70,7 +82,10 @@ export default class Game {
 
 		for (let y = 0; y < blocks.length; y++) {
 			for (var x = 0; x < blocks[y].length; x++) {
-				this.playfield[pieceY + y][pieceX + x] = blocks[y][x];
+				if (blocks[y][x]) {
+					this.playfield[pieceY + y][pieceX + x] = blocks[y][x];
+
+				}
 			}
 		}
 	}
