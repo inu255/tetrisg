@@ -66,7 +66,7 @@ export default class Game {
 			for (var x = 0; x < blocks[y].length; x++) {
 				if (
 					(blocks[y][x]) &&
-					((this.playfield[pieceY + y] === undefined || this.playfield[pieceY + y][pieceX + x] === undefined;) ||
+					((this.playfield[pieceY + y] === undefined || this.playfield[pieceY + y][pieceX + x] === undefined) ||
 					(this.playfield[pieceY + y][pieceX + x])
 				) {
 					return true;
