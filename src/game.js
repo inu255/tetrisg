@@ -64,4 +64,32 @@ export default class Game {
 
 		return playfield[y] === undefined || playfield[y][x] === undefined;
 	}
+
+	lockPiece() {
+		const blocks = this.activePiece.blocks;
+		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
+
+		for (let y = 0; y < blocks.length; y++) {
+			for (var x = 0; x < blocks[y].length; x++) {
+				this.playfield[this.pieceY + y][this.pieceX + x] = blocks[y][x];
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log(1)
