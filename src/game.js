@@ -37,7 +37,7 @@ export default class Game {
 	movePieceLeft() {
 		this.activePiece.x -= 1;
 
-		if (this.ifPieceOutOfBound()) {
+		if (this.hasCollision()) {
 			this.activePiece.x += 1;
 		}
 	}
@@ -45,7 +45,7 @@ export default class Game {
 	movePieceRight() {
 		this.activePiece.x += 1;
 
-		if (this.ifPieceOutOfBound()) {
+		if (this.hasCollision()) {
 			this.activePiece.x -= 1;
 		}
 	}
@@ -53,13 +53,34 @@ export default class Game {
 	movePieceDown() {
 		this.activePiece.y += 1;
 
-		if (this.ifPieceOutOfBound()) {
+		if (this.hasCollision()) {
 			this.activePiece.y -= 1;
 			this.lockPiece();
 		}
 	}
 
-	ifPieceOutOfBound() {
+	rotatePiece() {
+		const blocks = this.activePiece.blocks;
+		const length = blocks.length;
+
+		const temp = [];
+		for (var i = 0; i < length; i++) {
+			temp[i] = new Array(length).fill(0);
+		}
+
+		for (var y = 0; y < length; y++) {
+			for (var x = 0; x < length; x++) {
+				temp[x][y] = blocks[length - 1 - y][x];
+			}
+		}
+
+		this.activePiece.blocks = temp;
+		if (this.hasCollision()) {
+			this.activePiece.blocks = blocks;
+		}
+	}
+
+	hasCollision() {
 		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
 		for (let y = 0; y < blocks.length; y++) {
