@@ -9,6 +9,27 @@ export default class View {
     this.canvas.height = this.height;
     this.context = this.canvas.getContext('2d');
 
+    this.blockWidth = this.width / columns;
+    this.blockHeight = this.height / rows;
+
     this.element.appendChild(this.canvas);
+  }
+
+  renderPlayfield(playfield) {
+    for (var y = 0; y < playfield.length; y++) {
+      const line = playfield[y]; // здесь лежит вложенный массив (ось х)
+
+      for (var x = 0; x < line.length; x++) {
+        const block = line[x]; // ячейка
+
+        if (block) { // block === 1
+          this.context.fillStyle = 'red';
+          this.context.strokeStyle = 'black';
+          this.context.lineWidth = 2;
+
+          this.context.fillRect(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight)
+        }
+      }
+    }
   }
 }

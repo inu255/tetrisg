@@ -8,3 +8,5 @@ const view = new View(root, 480, 640, 20, 10);
 
 window.game = game;
 window.view = view;
+
+view.renderPlayfield(game.playfield);
