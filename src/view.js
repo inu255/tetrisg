@@ -17,7 +17,7 @@ export default class View {
 
   render({ playfield }) {
     this.clearScreen();
-    this.renderPlayfield();
+    this.renderPlayfield(playfield);
 
   }
 
