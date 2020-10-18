@@ -2,28 +2,7 @@ export default class Game {
 	score = 0;
 	lines = 0;
 	level = 0;
-	playfield = [
-		[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-		[0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-		[0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	];
+	playfield = this.createPlayfield();
 	activePiece = {
 		x: 0,
 		y: 0,
@@ -32,6 +11,45 @@ export default class Game {
 			[1, 1, 1],
 			[0, 0, 0]
 		]
+	}
+
+	getState() {
+		const playfield = this.createPlayfield(); // пустое поле
+
+		for (let y = 0; y < this.playfield.length; y++) {
+			playfield[y] = [];
+
+			for (let x = 0; x < this.playfield[y].length; x++) {
+				playfield[y][x] = this.playfield[y][x]; // наполняет новый массив значениями из главного массива
+			}
+		}
+
+		for (let y = 0; y < this.activePiece.blocks.length; y++) { // вставляет нужную фигуру в нужное место
+			for (let x = 0; x < this.activePiece.blocks[y].length; x++) {
+				if (this.activePiece.blocks[y][x]) {
+					playfield[this.activePiece.y + y][this.activePiece.x + x] = this.activePiece.blocks;
+				}
+			}
+
+		}
+
+		return {
+			playfield
+		}
+	}
+
+	createPlayfield() { // создаёт пустое поле
+		const playfield = [];
+
+		for (var y = 0; y < 20; y++) {
+			playfield[y] = [];
+
+			for (var x = 0; x < 10; x++) {
+				playfieldp[y][x] = 0;
+			}
+		}
+
+		return playfield;
 	}
 
 	movePieceLeft() {

@@ -15,7 +15,9 @@ export default class View {
     this.element.appendChild(this.canvas);
   }
 
-  renderPlayfield(playfield) {
+  renderPlayfield({ playfield }) {
+    this.context.clearRect(0, 0, this.width, this.height);
+
     for (var y = 0; y < playfield.length; y++) {
       const line = playfield[y]; // здесь лежит вложенный массив (ось х)
 
