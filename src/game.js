@@ -45,7 +45,7 @@ export default class Game {
 			playfield[y] = [];
 
 			for (var x = 0; x < 10; x++) {
-				playfieldp[y][x] = 0;
+				playfield[y][x] = 0;
 			}
 		}
 
