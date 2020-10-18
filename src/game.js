@@ -26,7 +26,7 @@ export default class Game {
 		}
 
 		for (let y = 0; y < blocks.length; y++) { // вставляет нужную фигуру в нужное место
-			for (let x = 0; x <.blocks[y].length; x++) {
+			for (let x = 0; x <blocks[y].length; x++) {
 				if (blocks[y][x]) {
 					playfield[pieceY + y][pieceX + x] = blocks;
 				}
