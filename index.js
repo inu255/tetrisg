@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import Game from './src/game.js';
 import View from './src/view.js';
