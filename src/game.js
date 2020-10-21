@@ -3,15 +3,8 @@ export default class Game {
 	lines = 0;
 	level = 0;
 	playfield = this.createPlayfield();
-	activePiece = {
-		x: 0,
-		y: 0,
-		blocks: [
-			[0, 1, 0],
-			[1, 1, 1],
-			[0, 0, 0]
-		]
-	}
+	activePiece = this.createPiece();
+	nextPiece = this.createPiece();
 
 	getState() {
 		const playfield = this.createPlayfield(); // пустое поле
@@ -53,6 +46,70 @@ export default class Game {
 		return playfield;
 	}
 
+	createPiece() {
+		const index = Math.floor(Math.random() * 7);
+		const type = 'IJLOSTZ'[index];
+		const piece - {x: 0, y: 0};
+
+		switch (type) {
+			case 'I':
+				piece.blocks = [
+					[0, 0, 0, 0],
+					[1, 1, 1, 1],
+					[0, 0, 0, 0],
+					[0, 0, 0, 0]
+				];
+				break;
+			case 'J':
+				piece.blocks = [
+					[0, 0, 0],
+					[1, 1, 1],
+					[0, 0, 1]
+				];
+				break;
+			case 'L':
+				piece.blocks = [
+					[0, 0, 0],
+					[1, 1, 1],
+					[1, 0, 0]
+				];
+				break;
+			case 'O':
+				piece.blocks = [
+					[0, 0, 0, 0],
+					[0, 1, 1, 0],
+					[0, 1, 1, 0],
+					[0, 0, 0, 0]
+				];
+				break;
+			case 'S':
+				piece.blocks = [
+					[0, 0, 0],
+					[0, 1, 1],
+					[1, 1, 0]
+				];
+				break;
+			case 'T':
+				piece.blocks = [
+					[0, 0, 0],
+					[1, 1, 1],
+					[0, 1, 0]
+				];
+				break;
+			case 'Z':
+				piece.blocks = [
+					[0, 0, 0],
+					[1, 1, 0],
+					[0, 1, 1]
+				];
+				break;
+			default:
+				throw new Error('Неизвестный тип фигуры');
+		}
+
+		return piece;
+	}
+
 	movePieceLeft() {
 		this.activePiece.x -= 1;
 
@@ -75,6 +132,7 @@ export default class Game {
 		if (this.hasCollision()) {
 			this.activePiece.y -= 1;
 			this.lockPiece();
+			this.updatePieces();
 		}
 	}
 
@@ -127,6 +185,11 @@ export default class Game {
 				}
 			}
 		}
+	}
+
+	updatePieces() {
+		this.activePiece = this.nextPiece; // добавляет новую фигуру
+		this.nextPiece = this.createPiece();
 	}
 }
 
