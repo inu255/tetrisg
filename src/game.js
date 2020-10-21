@@ -49,7 +49,7 @@ export default class Game {
 	createPiece() {
 		const index = Math.floor(Math.random() * 7);
 		const type = 'IJLOSTZ'[index];
-		const piece - {x: 0, y: 0};
+		const piece = {x: 0, y: 0};
 
 		switch (type) {
 			case 'I':
