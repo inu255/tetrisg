@@ -28,11 +28,12 @@ export default class Game {
 		}
 
 		return playfield;
+	}
 
 	createPlayfield() { // создаёт пустое поле
 		const playfield = [];
 
-		for (let y = 0; y < 20; y++) {
+		for (var y = 0; y < 20; y++) {
 			playfield[y] = [];
 
 			for (let x = 0; x < 10; x++) {
