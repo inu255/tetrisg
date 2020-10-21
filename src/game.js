@@ -19,7 +19,7 @@ export default class Game {
 		}
 
 		for (let y = 0; y < blocks.length; y++) { // вставляет нужную фигуру в нужное место
-			for (let x = 0; x <blocks[y].length; x++) {
+			for (let x = 0; x < blocks[y].length; x++) {
 				if (blocks[y][x]) {
 					playfield[pieceY + y][pieceX + x] = blocks;
 				}
@@ -35,10 +35,10 @@ export default class Game {
 	createPlayfield() { // создаёт пустое поле
 		const playfield = [];
 
-		for (var y = 0; y < 20; y++) {
+		for (let y = 0; y < 20; y++) {
 			playfield[y] = [];
 
-			for (var x = 0; x < 10; x++) {
+			for (let x = 0; x < 10; x++) {
 				playfield[y][x] = 0;
 			}
 		}
@@ -141,12 +141,12 @@ export default class Game {
 		const length = blocks.length;
 
 		const temp = [];
-		for (var i = 0; i < length; i++) {
+		for (let i = 0; i < length; i++) {
 			temp[i] = new Array(length).fill(0);
 		}
 
-		for (var y = 0; y < length; y++) {
-			for (var x = 0; x < length; x++) {
+		for (let y = 0; y < length; y++) {
+			for (let x = 0; x < length; x++) {
 				temp[x][y] = blocks[length - 1 - y][x];
 			}
 		}
@@ -161,7 +161,7 @@ export default class Game {
 		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
 		for (let y = 0; y < blocks.length; y++) {
-			for (var x = 0; x < blocks[y].length; x++) {
+			for (let x = 0; x < blocks[y].length; x++) {
 				if (
 					blocks[y][x] &&
 					((this.playfield[pieceY + y] === undefined || this.playfield[pieceY + y][pieceX + x] === undefined) ||
@@ -178,7 +178,7 @@ export default class Game {
 		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
 		for (let y = 0; y < blocks.length; y++) {
-			for (var x = 0; x < blocks[y].length; x++) {
+			for (let x = 0; x < blocks[y].length; x++) {
 				if (blocks[y][x]) {
 					this.playfield[pieceY + y][pieceX + x] = blocks[y][x];
 
