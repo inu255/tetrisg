@@ -37,11 +37,11 @@ export default class View {
   }
 
   renderPlayfield(playfield) {
-    for (var y = 0; y < playfield.length; y++) {
-      const line = playfield[y]; // здесь лежит вложенный массив (ось х)
+    for (let y = 0; y < playfield.length; y++) {
+      // const line = playfield[y]; // здесь лежит вложенный массив (ось х)
 
-      for (var x = 0; x < line.length; x++) {
-        const block = line[x]; // ячейка
+      for (let x = 0; x < playfield[y].length; x++) {
+        const block = line[y][x]; // ячейка
 
         if (block) { // block === 1
           console.log(block);
