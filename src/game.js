@@ -26,10 +26,7 @@ export default class Game {
 			}
 
 		}
-
-		return {
 			playfield
-		}
 	}
 
 	createPlayfield() { // создаёт пустое поле
