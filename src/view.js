@@ -48,7 +48,7 @@ export default class View {
         for (let i = 0; i < block.length; i++) {
           for (let j = 0; j < block[i].length; j++) {
             if (block[i][j] !== 0) {
-              consloe.log(block[i][j]);
+              console.log(block[i][j]);
             }
           }
         }
