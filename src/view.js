@@ -46,8 +46,8 @@ export default class View {
         const block = playfield[y][x]; // ячейка
 
         if (block) { // block === 1
-          console.log(block);
           this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, View.colors[block]);
+          console.log(View.colors[block]);
         }
       }
     }
