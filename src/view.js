@@ -1,15 +1,14 @@
 export default class View {
-  // static colors = {
-  //   '1': 'cyan',
-  //   '2': 'blue',
-  //   '3': 'orange',
-  //   '4': 'yellow',
-  //   '5': 'green',
-  //   '6': 'purple',
-  //   '7': 'red'
-  // };
+  static colors = {
+    '1': 'cyan',
+    '2': 'blue',
+    '3': 'orange',
+    '4': 'yellow',
+    '5': 'green',
+    '6': 'purple',
+    '7': 'red'
+  };
 
-  static colors = [, 'cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
 
   constructor(element, width, height, rows, columns) {
     this.element = element;

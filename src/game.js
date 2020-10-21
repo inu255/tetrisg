@@ -6,7 +6,7 @@ export default class Game {
 	activePiece = this.createPiece();
 	nextPiece = this.createPiece();
 
-	getState() {
+	getState() { // возвращает поле
 		const playfield = this.createPlayfield(); // пустое поле
 		const {y: pieceY, x: pieceX, blocks} = this.activePiece;
 
@@ -21,7 +21,7 @@ export default class Game {
 		for (let y = 0; y < blocks.length; y++) { // вставляет нужную фигуру в нужное место
 			for (let x = 0; x < blocks[y].length; x++) {
 				if (blocks[y][x]) {
-					playfield[pieceY + y][pieceX + x] = blocks;
+					playfield[pieceY + y][pieceX + x] = blocks[y][x];
 				}
 			}
 
@@ -44,7 +44,7 @@ export default class Game {
 		return playfield;
 	}
 
-	createPiece() {
+	createPiece() { // разные фигуры
 		const index = Math.floor(Math.random() * 7);
 		const type = 'IJLOSTZ'[index];
 		const piece = {x: 0, y: 0};
