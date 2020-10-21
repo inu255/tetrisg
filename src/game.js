@@ -47,7 +47,7 @@ export default class Game {
 	createPiece() { // разные фигуры
 		const index = Math.floor(Math.random() * 7);
 		const type = 'IJLOSTZ'[index];
-		const piece = {x: 0, y: 0};
+		const piece = {};
 
 		switch (type) {
 			case 'I':
@@ -104,6 +104,9 @@ export default class Game {
 			default:
 				throw new Error('Неизвестный тип фигуры');
 		}
+
+		piece.x = Math.floor((10 - piece.block.length) / 2);
+		piece.y = -1;
 
 		return piece;
 	}
