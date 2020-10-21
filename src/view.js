@@ -1,4 +1,14 @@
 export default class View {
+  static colors = {
+    '1': 'cyan',
+    '2': 'blue',
+    '3': 'orange',
+    '4': 'yellow',
+    '5': 'grren',
+    '6': 'purple',
+    '7': 'red'
+  };
+
   constructor(element, width, height, rows, columns) {
     this.element = element;
     this.width =  width;
@@ -34,7 +44,7 @@ export default class View {
         const block = line[x]; // ячейка
 
         if (block) { // block === 1
-          this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, 'red');
+          this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, View.colors[block]);
         }
       }
     }
