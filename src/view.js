@@ -1,5 +1,5 @@
 export default class View {
-  static colors = {
+   colors = {
     '1': 'cyan',
     '2': 'blue',
     '3': 'orange',
