@@ -1,15 +1,15 @@
 export default class View {
-  static colors = {
-    '1': 'cyan',
-    '2': 'blue',
-    '3': 'orange',
-    '4': 'yellow',
-    '5': 'green',
-    '6': 'purple',
-    '7': 'red'
-  };
+  // static colors = {
+  //   '1': 'cyan',
+  //   '2': 'blue',
+  //   '3': 'orange',
+  //   '4': 'yellow',
+  //   '5': 'green',
+  //   '6': 'purple',
+  //   '7': 'red'
+  // };
 
-  // static colors = ['cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
+  static colors = ['cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
 
   constructor(element, width, height, rows, columns) {
     this.element = element;
@@ -46,7 +46,7 @@ export default class View {
         const block = playfield[y][x]; // ячейка
 
         if (block) { // block === 1
-          this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, View.colors.block);
+          this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, View.colors[block + 1]);
           console.log(View.colors[block]);
         }
       }
