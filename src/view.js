@@ -9,7 +9,7 @@ export default class View {
   //   '7': 'red'
   // };
 
-  static colors = ['cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
+  static colors = [, 'cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
 
   constructor(element, width, height, rows, columns) {
     this.element = element;
@@ -46,11 +46,11 @@ export default class View {
         const block = playfield[y][x]; // ячейка
 
         for (let i = 0; i < block.length; i++) {
-          for (let j = 0; j < block[i].length; j++) {
-            if (block[i][j] !== 0) {
-              console.log(block[i][j]);
-            }
-          }
+          // for (let j = 0; j < block[i].length; j++) {
+          //   if (block[i][j] !== 0) {
+          //     const current = block[i][j];
+          //   }
+          // }
         }
 
         if (block) { // block === 1
