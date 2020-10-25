@@ -105,7 +105,7 @@ export default class Game {
 				throw new Error('Неизвестный тип фигуры');
 		}
 
-		piece.x = Math.floor((10 - piece.block.length) / 2);
+		piece.x = Math.floor((10 - piece.blocks.length) / 2);
 		piece.y = -1;
 
 		return piece;
@@ -133,6 +133,7 @@ export default class Game {
 		if (this.hasCollision()) {
 			this.activePiece.y -= 1;
 			this.lockPiece();
+			this.clearLines();
 			this.updatePieces();
 		}
 	}
@@ -185,6 +186,35 @@ export default class Game {
 
 				}
 			}
+		}
+	}
+
+	clearLines() {
+		const rows = 20;
+		const columns = 10;
+		let lines = [];
+
+		for (let y = rows - 1; y >= 0; y--) {
+			let numberOfBlocks = 0;
+
+			for (let x = 0; x < columns; x++) {
+				if (this.playfield[y][x]) {
+					numberOfBlocks += 1; // сколько ненулевых ячеек в строке
+				}
+			}
+
+			if (numberOfBlocks === 0) {
+				break;
+			} else if (numberOfBlocks < columns) {
+				continue;
+			} else if (numberOfBlocks === columns) {
+				lines.unshift(y); // в lines теперь индексы строк, котрые нужно удалить
+			}
+		}
+
+		for (let index of lines) {
+			this.playfield.splice(index, 1);
+			this.playfield.unshift(new Array(columns).fill(0)); // добавляет нулевую строку в начало, чтобы всё игровое поле съехало вниз
 		}
 	}
 
