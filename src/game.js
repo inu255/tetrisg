@@ -149,7 +149,6 @@ export default class Game {
 		if (this.hasCollision()) {
 			this.activePiece.y -= 1;
 			this.lockPiece();
-			this.clearLines();
 			const clearedLines = this.clearLines();
 			this.updateScore(clearedLines);
 			this.updatePieces();
@@ -240,9 +239,8 @@ export default class Game {
 
 	updateScore(clearedLines) {
 		if (clearedLines > 0) {
-			this.score += Game.points[clearLines] * (this.level + 1);
+			this.score += Game.points[clearedLines] * (this.level + 1);
 			this.lines += clearedLines;
-			console.log(this.score, this.lines, this.level)
 		}
 	}
 
