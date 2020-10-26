@@ -77,7 +77,7 @@ export default class View {
     this.context.strokeRect(0, 0, this.playfieldWidth, this.playfieldHeight);
   }
 
-  renderPanel({level, score, lines, nextPiece}) {
+  renderPanel({ level, score, lines, nextPiece }) {
     this.context.textAlign = 'start';
     this.context.textBaseline = 'top';
     this.context.fillStyle = 'white';
