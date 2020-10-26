@@ -55,9 +55,29 @@ export default class View {
     this.context.textAlign = 'start';
     this.context.textBaseline = 'top';
     this.context.fillStyle = 'white';
-    this.context.font = '14px "Press Start 2P"';
+    this.context.font = 'normal 14px "Press Start 2P"';
 
-    this.context.fillText(`Level: ${level}`, 0, 0);
+    this.context.fillText(`Score: ${score}`, 0, 0);
+    this.context.fillText(`Lines: ${lines}`, 0, 24);
+    this.context.fillText(`Level: ${level}`, 0, 48);
+    this.context.fillText(`Next`, 0, 96);
+
+    for (let y = 0; y < nextPiece.blocks.length; y++) {
+      for (let x = 0; x < nextPiece.blocks[y].length; x++) {
+        const block = nextPiece[y][x];
+
+        if (block) {
+          this.renderBlock(
+            x * this.blockWidth,
+            y * this.blockHeight,
+            this.blockWidth,
+            this.blockHeight,
+            View.colors[block]
+          );
+        }
+      }
+    }
+
   }
 
   renderBlock(x, y, width, height, color) {
