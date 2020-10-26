@@ -1,5 +1,5 @@
 export default class Game {
-	static points = {
+	static points = { // к-ву удалённых за раз линий соответствует к-во очков
 		'1': 40,
 		'2': 100,
 		'3': 300,
@@ -8,10 +8,13 @@ export default class Game {
 
 	score = 0;
 	lines = 0;
-	level = 0;
 	playfield = this.createPlayfield();
 	activePiece = this.createPiece();
 	nextPiece = this.createPiece();
+
+	get level() {
+		return Math.floor(this.lines * 0.1);
+	}
 
 	getState() { // возвращает поле
 		const playfield = this.createPlayfield(); // пустое поле
