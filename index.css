@@ -1,5 +1,8 @@
 h1 {
   font-family: 'Press Start 2P', cursive;
+  width: 240px;
+  margin: 40px auto 0 auto;
+  letter-spacing: -12px;
 }
 
 body {
