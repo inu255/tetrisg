@@ -51,7 +51,7 @@ export default class View {
     }
   }
 
-  renderPanel({level, score, lines, nextPiece}}) {
+  renderPanel({level, score, lines, nextPiece}) {
     this.context.textAlign = 'start';
     this.context.textBaseline = 'top';
     this.context.fillStyle = 'white';
