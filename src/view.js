@@ -55,9 +55,9 @@ export default class View {
     this.context.textAlign = 'start';
     this.context.textBaseline = 'top';
     this.context.fillStyle = 'white';
-    this.context.font = 'Press Start 2P';
+    this.context.font = '14px Press Start 2P';
 
-    this.context.fillText('Level: {$level}', 0, 0);
+    this.context.fillText(`Level: {$level}`, 0, 0);
   }
 
   renderBlock(x, y, width, height, color) {
