@@ -23,6 +23,23 @@ export default class View {
     this.blockWidth = this.width / columns;
     this.blockHeight = this.height / rows;
 
+    this.playfieldBorderWidth = 4;
+    this.playfieldX = this.playfieldBorderWidth;
+    this.playfieldY = this.playfieldBorderWidth;
+    this.playfieldWidth = this.width * 2 / 3;
+    this.playfieldHeight = this.height;
+    this.playfieldInnerWidth = this.playfieldWidth - this.playfieldBorderWidth * 2;
+    this.playfieldInnerHeight = this.playfieldHeight - this.playfieldBorderWidth * 2;
+
+    this.blockWidth = this.playfieldInnerWidth / columns;
+    this.blockHeight = this.playfieldInnerHeight / rows;
+
+    this.panelX = this.playfieldWidth + 10;
+    this.panelY = 0;
+    this.panelWidth = this.width / 3;
+    this.panelHeight = this.height;
+
+
     this.element.appendChild(this.canvas);
   }
 
@@ -44,11 +61,20 @@ export default class View {
       for (let x = 0; x < playfield[y].length; x++) {
         const block = playfield[y][x]; // ячейка
         if (block) { // block === 1
-          this.renderBlock(x * this.blockWidth, y * this.blockHeight, this.blockWidth, this.blockHeight, View.colors[block]);
+          this.renderBlock(
+            this.playfieldX + (x * this.blockWidth),
+            this.playfieldY + (y * this.blockHeight),
+            this.blockWidth,
+            this.blockHeight,
+            View.colors[block]);
 
         }
       }
     }
+
+    this.context.strokeStyle = 'white';
+    this.context.lineWidth = this.playfieldBorderWidth;
+    this.context.strokeRect(0, 0, this.playfieldWidth, this.playfieldHeight);
   }
 
   renderPanel({level, score, lines, nextPiece}) {
@@ -57,10 +83,10 @@ export default class View {
     this.context.fillStyle = 'white';
     this.context.font = 'normal 14px "Press Start 2P"';
 
-    this.context.fillText(`Score: ${score}`, 0, 0);
-    this.context.fillText(`Lines: ${lines}`, 0, 24);
-    this.context.fillText(`Level: ${level}`, 0, 48);
-    this.context.fillText(`Next`, 0, 96);
+    this.context.fillText(`Score: ${score}`, this.panelX, this.panelY + 0);
+    this.context.fillText(`Lines: ${lines}`, this.panelX, this.panelY + 24);
+    this.context.fillText(`Level: ${level}`, this.panelX, this.panelY + 48);
+    this.context.fillText(`Next:`, this.panelX, this.panelY + 96);
 
     for (let y = 0; y < nextPiece.blocks.length; y++) {
       for (let x = 0; x < nextPiece.blocks[y].length; x++) {
@@ -68,10 +94,10 @@ export default class View {
 
         if (block) {
           this.renderBlock(
-            x * this.blockWidth,
-            y * this.blockHeight,
-            this.blockWidth,
-            this.blockHeight,
+            this.panelX + (x * this.blockWidth * 0.5),
+            this.panelY + 100 + (y * this.blockHeight * 0.5),
+            this.blockWidth * 0.5,
+            this.blockHeight * 0.5,
             View.colors[block]
           );
         }
