@@ -64,7 +64,7 @@ export default class View {
 
     for (let y = 0; y < nextPiece.blocks.length; y++) {
       for (let x = 0; x < nextPiece.blocks[y].length; x++) {
-        const block = nextPiece[y][x];
+        const block = nextPiece.blocks[y][x];
 
         if (block) {
           this.renderBlock(
