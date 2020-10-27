@@ -12,19 +12,19 @@ export default class Controller {
 
   update() {
     this.game.movePieceDown();
-    updateView();
+    this.updateView();
   }
 
   play() {
     this.isPlaying = true;
     this.startTimer();
-    updateView();
+    this.updateView();
   }
 
   pause() {
     this.isPlaying = false;
     this.stopTimer();
-    updateView();
+    this.updateView();
   }
 
   updateView() {
