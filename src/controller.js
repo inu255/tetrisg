@@ -40,8 +40,8 @@ export default class Controller {
   }
 
   stopTimer() {
-    if (this.IntervalId) {
-      clearInterval(this.IntervalId);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
       this.intervalId = null;
     }
   }
