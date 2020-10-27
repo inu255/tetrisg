@@ -2,8 +2,9 @@ export default class Controller {
   constructor(game, view) {
     this.game = game;
     this.view = view;
-    this.isPlaying = false;
     this.intervalId = null;
+    this.isPlaying = false;
+
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
