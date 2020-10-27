@@ -29,14 +29,20 @@ export default class Controller {
   }
 
   updateView() {
-    this.view.renderMainScreen(this.game.getState());
+    if (!this.isPlaying) {
+      this.view.renderPauseScreen();
+    } else {
+      this.view.renderMainScreen(this.game.getState());
+
+    }
   }
 
   startTimer() {
+    const speed = 1000 - this.game.getState().level * 100;
     if (!this.IntervalId) {
       this.intervalId = setInterval(() => {
         this.update();
-      }, 1000)
+      }, speed > 0 ? speed : 100);
     }
   }
 
