@@ -3,7 +3,7 @@ export default class Controller {
     this.game = game;
     this.view = view;
     this.isPlaying = false;
-    this.intervalId = nullж
+    this.intervalId = null;
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
