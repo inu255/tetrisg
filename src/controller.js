@@ -68,19 +68,19 @@ export default class Controller {
       break;
       case 37: // left
         this.game.movePieceLeft();
-        this.view.renderMainScreen(this.game.getState());
+        this.updateView();
         break;
         case 38: // up
           this.game.rotatePiece();
-          this.view.renderMainScreen(this.game.getState());
+          this.updateView();
           break;
         case 39: // right
             this.game.movePieceRight();
-            this.view.renderMainScreen(this.game.getState());
+            this.updateView();
             break;
         case 40: // down
             this.game.movePieceDown();
-            this.view.renderMainScreen(this.game.getState());
+            this.updateView();
             break;
     }
   }
