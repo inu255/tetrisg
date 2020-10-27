@@ -34,7 +34,7 @@ export default class Controller {
   startTimer() {
     if (!this.IntervalId) {
       this.intervalId = setInterval(() => {
-        update();
+        this.update();
       }, 1000)
     }
   }
