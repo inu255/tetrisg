@@ -7,6 +7,8 @@ export default class Controller {
 
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
+    document.addEventListener('keyup', this.handleKeyUp.bind(this));
+
 
     this.view.renderStartScreen();
   }
@@ -26,6 +28,11 @@ export default class Controller {
     this.isPlaying = false;
     this.stopTimer();
     this.updateView();
+  }
+
+  reset() {
+    this.game.reset()
+    this.play();
   }
 
   updateView() {
@@ -58,9 +65,13 @@ export default class Controller {
   }
 
   handleKeyDown(event) {
+    const state = this.game.getState();
+
     switch (event.keyCode) {
       case 13: // ENTER
-      if (this.isPlaying) {
+      if (state.isGameOver) {
+        this.reset();
+      } else if (this.isPlaying) {
         this.pause();
       } else {
         this.play();
@@ -79,8 +90,18 @@ export default class Controller {
             this.updateView();
             break;
         case 40: // down
+            this.startTimer();
             this.game.movePieceDown();
             this.updateView();
+            break;
+    }
+  }
+
+
+  handleKeyUp(event) {
+    switch (event.keyCode) {
+        case 40: // down
+            this.startTimer();
             break;
     }
   }
