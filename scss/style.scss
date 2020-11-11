@@ -1,0 +1,16 @@
+$color: green;
+
+body {
+  background: $color;
+
+  h1 {
+    color: white;
+    font-family: arial;
+    font-weight: lighter;
+    transition: all .5s ease;
+  }
+}
+
+a {
+  display: none;
+}
